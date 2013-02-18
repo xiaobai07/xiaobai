@@ -42,3 +42,4 @@ public class Solution {
         return res;
     }
 }
+//what about binary search???
