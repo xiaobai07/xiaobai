@@ -20,6 +20,7 @@ public class Solution {
                                     sum=num[j]+num[k]+num[i];                                        
                                 }
                                 k--; 
+                                while(j<k&&num[k+1]==num[k]) k--;
                                  
                     }else{
                            if(Math.abs(num[j]+num[k]+num[i]-target)<min)
@@ -28,6 +29,7 @@ public class Solution {
                                  sum=num[j]+num[k]+num[i];
                            }     
                            j++;
+                           while(j<k&&num[j-1]==num[j]) j++;
                     }
                 }
             }
