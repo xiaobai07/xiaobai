@@ -6,27 +6,28 @@ public class Solution {
         int sum=0;
         if(num.length<3) return 0;        
         Arrays.sort(num);
-        for(int i=0;i<num.length-2;i++){
-            if(i==0 || num[i]>num[i-1]){ //avoid duplicate solutions   
+        for(int i=0;i<num.length-2;i++)
+        {
+            if(i==0 || num[i]>num[i-1])
+            { //avoid duplicate solutions   
                 int j=i+1, k=num.length-1;
                 while(j<k){ 
-                    if(num[j]+num[k]+num[i]==target){
+                    int tmpsum=num[j]+num[k]+num[i];
+                    if(tmpsum==target){
                         return target;
-
-                    }else if(num[j]+num[k]+num[i]>target){
-                                if((num[j]+num[k]+num[i]-target)<min) 
+                    }else if(tmpsum>target){
+                                if((tmpsum-target)<min) 
                                 {
-                                    min=num[j]+num[k]+num[i]-target;
-                                    sum=num[j]+num[k]+num[i];                                        
+                                    min=tmpsum-target;
+                                    sum=tmpsum;                                        
                                 }
                                 k--; 
-                                while(j<k&&num[k+1]==num[k]) k--;
-                                 
+                                while(j<k&&num[k+1]==num[k]) k--;                                 
                     }else{
-                           if(Math.abs(num[j]+num[k]+num[i]-target)<min)
+                           if(Math.abs(tmpsum-target)<min)
                            {
-                                 min=Math.abs(num[j]+num[k]+num[i]-target);
-                                 sum=num[j]+num[k]+num[i];
+                                 min=Math.abs(tmpsum-target);
+                                 sum=tmpsum;
                            }     
                            j++;
                            while(j<k&&num[j-1]==num[j]) j++;
