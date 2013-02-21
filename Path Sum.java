@@ -17,31 +17,31 @@ public class Solution {
         else return hasPathSum(root.right,sum-root.val) || hasPathSum(root.left,sum-root.val);
     }
 
+ 
 public class Solution {
     public boolean hasPathSum(TreeNode root, int sum) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        if(root==null) return false;        
-        LinkedList<TreeNode> nodes = new LinkedList<TreeNode>();
-        LinkedList<Integer> accSums = new LinkedList<Integer>();
-        nodes.add(root);
-        accSums.add(root.val);
-        
-        while(!nodes.isEmpty()){
-            TreeNode node = nodes.poll();
-            Integer accSum = accSums.poll();
-            if(node.left==null && node.right==null && accSum==sum)
-                return true;
-            if(node.left!=null){
-                nodes.add(node.left);
-                accSums.add(accSum+node.left.val);
+        if(root==null) return false;
+        Queue<TreeNode> res=new LinkedList<TreeNode>();
+        Queue<Integer>  resum=new LinkedList<Integer>();
+        res.add(root);
+        resum.add(root.val);
+        while(res.size()!=0)
+        {
+            TreeNode r=res.poll();
+            Integer s=resum.poll();
+            if(r.left==null&&r.right==null&&s==sum) return true;
+            if(r.left!=null){
+                res.add(r.left);
+                resum.add(r.left.val+s);
             }
-            if(node.right!=null){
-                nodes.add(node.right);
-                accSums.add(accSum+node.right.val);
+            if(r.right!=null){
+                res.add(r.right);
+                resum.add(r.right.val+s);
             }
+            
         }
         return false;
     }
-  }    
 }
