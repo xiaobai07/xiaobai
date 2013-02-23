@@ -1,6 +1,7 @@
 public class Solution {
-
     public String countAndSay(int n) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
         if (n<=0)  return null;
         StringBuilder res = new StringBuilder("1");
         while (n> 1) {
