@@ -5,11 +5,11 @@ public class Solution {
         if(m==0 || n==0) return 0;
         if(m==1 || n==1) return 1;        
         int[][] path = new int[m][n];        
-        for(int i=0;i<n;i++)
+        for(int i=n-1;i>=0;i--)
         {
             path[m-1][i]=1;
         }
-        for(int i=0;i<m;i++)
+        for(int i=m-1;i>=0;i--)
         {
             path[i][n-1]=1;
         }
