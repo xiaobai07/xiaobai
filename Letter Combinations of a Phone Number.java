@@ -14,15 +14,12 @@ public class Solution {
             return;
         }   
         int i = digits.charAt(level)-'0';
-        char[] choices = getX(i).toCharArray();
- 
- 
+        char[] choices = getX(i).toCharArray(); 
         for (int j = 0; j < choices.length; j++) {
             str[level] = choices[j];
             lc(digits, level+1, result, str);
         }
-    }
- 
+    } 
     public String getX (int i) {
         String[] arr = {" ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
         return arr[i];
