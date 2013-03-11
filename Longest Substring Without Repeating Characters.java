@@ -4,7 +4,7 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         ArrayList<Character> res=new ArrayList<Character>();
-        int i=0,max=0,j=0;
+        int max=0,j=0;
         while(j<s.length())
         {
             if(!res.contains(s.charAt(j)))
@@ -15,7 +15,6 @@ public class Solution {
             else{
                 if(res.size()>max) max=res.size();
                 res.remove(0);
-                i++;
             }
         }
         if(res.size()>max) max=res.size();
