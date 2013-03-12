@@ -18,24 +18,42 @@ public class Solution {
         else return 1+Math.min(minDepth(root.left),minDepth(root.right));
     }
 }
+/**
+ * Definition for binary tree
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
 public class Solution {
     public int minDepth(TreeNode root) {
         // Start typing your Java solution below
         // DO NOT write main() function
-       if(root==null) return 0;      
-       ArrayList<TreeNode> last =new ArrayList<TreeNode>();
-       last.add(root);
-       int count=1;
-       while(!last.isEmpty()){           
-        ArrayList<TreeNode> curr = new ArrayList<TreeNode>();
-        for(TreeNode n:last){
-           if(n.left==null && n.right==null) return count;
-           if(n.left!=null) curr.add(n.left);
-           if(n.right!=null) curr.add(n.right);
+        if(root==null)
+            return 0;
+        Queue <TreeNode> queue = new LinkedList<TreeNode>();
+        Queue <Integer> levelQueue = new LinkedList<Integer>();
+        queue.add(root);
+        levelQueue.add(1);
+        while(queue.size()>0){
+            TreeNode current = queue.poll();
+            int lastlevel = levelQueue.poll();
+            if(current.left==null && current.right==null){
+                return lastlevel;
+            }
+            if(current.left !=null){
+                queue.add(current.left);
+                levelQueue.add(lastlevel+1);
+            }
+            if(current.right !=null){
+                queue.add(current.right);
+                levelQueue.add(lastlevel+1);
+            }
+            
         }
-        count++;
-        last=new ArrayList<TreeNode>(curr);
-       }
-       return count;
+        return -1;
+        
     }
 }
