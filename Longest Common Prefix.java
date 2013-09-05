@@ -10,7 +10,7 @@ public class Solution {
             char com=first.charAt(i);
             for(int j=1;j<strs.length;j++)
             {
-                if(i>strs[j].length()||strs[j].charAt(i)!=com) return first.substring(0,i);
+                if(i>=strs[j].length()||strs[j].charAt(i)!=com) return first.substring(0,i);
             }
         }
         return first.substring(0,i);
