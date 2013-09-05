@@ -4,8 +4,8 @@ public class Solution {
         // DO NOT write main() function
         int sign = 1;
   	if(x<0){
-			x *= -1;
-			sign *= -1;
+			x = -x;
+			sign = -1;
 		}
 		int res = 0;
 		while(x>0){
