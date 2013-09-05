@@ -14,21 +14,20 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         ListNode p=head,q=head;
-        int count=n;
-        while(count>0)
+        int num = n;
+        while(num>0)
         {
             q=q.next;
-            count--;
+            num--;
         }
-        if(q==null&&n>1) return head.next;
+        if(q==null&&num==0) return head.next;
         else if(q==null) return null;
         while(q.next!=null)
         {
             q=q.next;
             p=p.next;
         }
-        ListNode r=p.next.next;
-        p.next=r;
+        p.next=p.next.next;
         return head;
     }
 }
