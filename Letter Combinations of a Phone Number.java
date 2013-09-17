@@ -1,27 +1,31 @@
-import java.util.ArrayList;
 public class Solution {
     public ArrayList<String> letterCombinations(String digits) {
-        // Start typing your Java solution below
-        // DO NOT write main() function 
-        ArrayList<String> result = new ArrayList<String>();
-        char[] str = new char[digits.length()]; 
-        lc(digits, 0, result, str);
-        return result;
+    HashMap<Character,String> map = new HashMap<Character,String>();
+    map.put('2',"abc");
+    map.put('3',"def");
+    map.put('4',"ghi");
+    map.put('5',"jkl");
+    map.put('6',"mno");
+    map.put('7',"pqrs");
+    map.put('8',"tuv");
+    map.put('9',"wxyz");
+	ArrayList<String> ret = new ArrayList<String>();
+	StringBuilder sb = new StringBuilder();
+	letterCombinations(digits, 0, sb, ret,map);
+	return ret;
     }
-    public void lc(String digits, int level, ArrayList<String> result, char[] str) {
-        if (level == digits.length()) {
-            result.add(new String(str));
-            return;
-        }   
-        int i = digits.charAt(level)-'0';
-        char[] choices = getX(i).toCharArray(); 
-        for (int j = 0; j < choices.length; j++) {
-            str[level] = choices[j];
-            lc(digits, level+1, result, str);
-        }
-    } 
-    public String getX (int i) {
-        String[] arr = {" ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-        return arr[i];
+
+    private void letterCombinations(String digits, int i, StringBuilder sb, ArrayList<String> ret,HashMap<Character,String> map) {
+	if (i >= digits.length()) {
+	    ret.add(sb.toString());
+	} else {
+
+	    String part = map.get(digits.charAt(i));
+	    for (int j = 0; j < part.length(); j++) {
+		sb.append(part.charAt(j));
+		letterCombinations(digits, i + 1, sb, ret,map);
+		sb.deleteCharAt(sb.length() - 1);
+	    }
+	}
     }
 }
