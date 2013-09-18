@@ -1,25 +1,19 @@
-public class Solution {
-    public ArrayList<String> generateParenthesis(int n) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        ArrayList<String> res=new ArrayList<String>();
-        char[] paren=new char[n+n];
-        generatepanren(n,0,0,paren,res);
-        return res;
-    }
-    public void generatepanren(int n,int left,int right,char[] paren,ArrayList<String> res)
-    {
-        if(left==right&&left==n){
-            String s=new String(paren);
-            res.add(s);
-        }
-        if(left<n){
-            paren[left+right]='(';
-            generatepanren(n,left+1,right,paren,res);
-        }
-        if(right<left){
-            paren[left+right]=')';
-            generatepanren(n,left,right+1,paren,res);
-        }
-    }
+public class Solution {  
+    public ArrayList<String> generateParenthesis(int n) {  
+        // Start typing your Java solution below  
+        // DO NOT write main() function  
+        ArrayList<String> res = new ArrayList<String>();  
+        if (n<=0) return res;  
+        dfs(res,"",n,n);  
+        return res;  
+    }  
+      
+    public void dfs(ArrayList<String> res, String tmp, int left, int right){  
+        if (left==0&&right==0){  
+            res.add(tmp);  
+            return;  
+        }  
+        if (left>0) dfs(res,tmp+'(',left-1,right);  
+        if (left<right) dfs(res,tmp+')',left,right-1);  
+    }  
 }
